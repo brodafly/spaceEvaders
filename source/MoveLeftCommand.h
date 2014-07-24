@@ -4,7 +4,7 @@
 
 class MoveLeftCommand : public Command {
 public:
-    void execute(GameObject& actor) {actor.moveObj(sf::Vector2f(-1, 0));}
+    void execute(GameObject& actor) {actor.moveObj(sf::Vector2f(-1, 0));} //inline or .cpp
 };
 
 #endif

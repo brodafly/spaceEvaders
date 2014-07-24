@@ -1,18 +1,25 @@
 #include <SFML/Graphics.hpp>
+#include <iostream>
 #include "source/GameObject.h"
 #include "source/MainActor.h"
 #include "source/MoveLeftCommand.h"
 #include "source/InputHandler.h"
 #include "source/InputHandler.cpp"  //remove when compiling project
+#include "source/GameObject.cpp"
+#include "source/EnemyActor.h"
+#include "source/Projectile.h"
+#include "source/Projectile.cpp"
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+    sf::RenderWindow window(sf::VideoMode(500, 640), "SFML works!");
+    window.setFramerateLimit(120);
     sf::RectangleShape shape(sf::Vector2f(100, 100));
-    MainActor me;
-    me.getBody().setPosition(sf::Vector2f (110, 50));
+    EnemyActor me;
+    me.getBody().setPosition(sf::Vector2f (225, 570));
+    Projectile bullet;
+    bullet.setPosition(sf::Vector2f(300, 200));
     InputHandler input;
-    //shape.setFillColor(sf::Color::Green);
     sf::ConvexShape polygon;
     polygon.setPointCount(3);
     polygon.setPoint(0, sf::Vector2f(0,0));
@@ -34,9 +41,9 @@ int main()
         {
             command->execute(me);
         }
-
         window.clear();
         me.draw(window);
+        bullet.draw(window);
         window.display();
     }
 
