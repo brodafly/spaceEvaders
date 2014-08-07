@@ -6,16 +6,16 @@ ObjectHandler::ObjectHandler() {
 }
 
 ObjectHandler::~ObjectHandler() {
-    for (auto it = objects.begin(); it != objects.end(); ++it) {
-        delete *it;
-        *it = 0;
+    for (auto& elem : objects) {
+        delete elem;
+        elem = nullptr;
     }
 }
 
 void ObjectHandler::drawAll(sf::RenderWindow& target) {
-    for (auto it = objects.begin(); it != objects.end(); ++it) {
-        if ((*it)->isDrawable())
-            (*it)->draw(target);
+    for (auto& elem : objects) {
+        if (elem->isDrawable())
+            elem->draw(target);
     }
 }
 
