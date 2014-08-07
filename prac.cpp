@@ -66,6 +66,7 @@ int main()
             command->execute(objects.getFirst());
         }
         window.clear();
+        objects.update();
         objects.drawAll(window);
         window.display();
     }

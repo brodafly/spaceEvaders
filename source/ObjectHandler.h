@@ -1,7 +1,9 @@
 #ifndef OBJECT_HANDLER_H
 #define OBJECT_HANDLER_H
 #include <list>
+#include <iterator> //std::next()
 #include "GameObject.h"
+
 
 class ObjectHandler {
 private:
@@ -13,7 +15,7 @@ public:
     virtual void drawAll(sf::RenderWindow& target); //removes invalid objects and draws
     void addObject(GameObject* obj);
     GameObject& getFirst();
-    //gotta add some update()
+    void update();
 };
 
 #endif
