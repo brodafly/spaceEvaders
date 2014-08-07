@@ -1,16 +1,18 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "source/GameObject.h"
-#include "source/MainActor.h"
-#include "source/InputHandler.h"
-#include "source/InputHandler.cpp"  //remove when compiling project
 #include "source/GameObject.cpp"
-#include "source/EnemyActor.h"
-#include "source/globals.h"
+#include "source/MoveableObject.h"
+#include "source/MoveableObject.cpp"
+#include "source/InputHandler.h"
+#include "source/InputHandler.cpp"
 #include "source/Projectile.h"
 #include "source/Projectile.cpp"
 #include "source/ObjectHandler.h"
 #include "source/ObjectHandler.cpp"
+#include "source/globals.h"
+#include "source/Actor.h"
+#include "source/Actor.cpp"
 
 //automate later
 void loadTextures(std::vector<sf::Texture>& textures) {         //consider returning bool
@@ -31,10 +33,10 @@ void loadTextures(std::vector<sf::Texture>& textures) {         //consider retur
 
 //automate later
 void loadLevel(ObjectHandler& objects) {
-    GameObject* ptr = new MainActor(ALL_TEXTURES[HERO]);
+    GameObject* ptr = new Actor(ALL_TEXTURES[HERO]);
     ptr->getBody().setPosition(225,570);
     objects.addObject(ptr);
-    ptr = new EnemyActor(ALL_TEXTURES[HERO]);
+    ptr = new Actor(ALL_TEXTURES[HERO]);
     objects.addObject(ptr);
 }
 
@@ -67,6 +69,5 @@ int main()
         objects.drawAll(window);
         window.display();
     }
-
     return 0;
 }
