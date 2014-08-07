@@ -4,6 +4,6 @@
 
 class FireCommand : public Command {
 public:
-    void execute(GameObject& actor) {}
+    void execute(GameObject& actor) {actor.fire();}
 }
 #endif

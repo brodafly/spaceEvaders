@@ -4,7 +4,7 @@
 
 class MoveUpCommand : public Command {
 public:
-    void execute(GameObject& actor) {actor.moveObj(sf::Vector2f(0, -1));}
+    void execute(GameObject& actor) {actor.move(sf::Vector2f(0, -1));}
 };
 
 #endif

@@ -3,20 +3,15 @@
 GameObject::GameObject(const sf::Texture& b) {
     collidable = true;
     drawable = true;
-    speed = DEFAULT_SPEED;
-    bodyTexture = b;
-    body = sf::Sprite(bodyTexture);
+    body = sf::Sprite(b);
 }
 
 GameObject::GameObject(const sf::Texture& b, const sf::Vector2f& coordinates) {
     collidable = true;
     drawable = true;
-    speed = DEFAULT_SPEED;
-    bodyTexture = b;
-    body = sf::Sprite(bodyTexture);
+    body = sf::Sprite(b);
     body.setPosition(coordinates);
 }
-
 
 void GameObject::draw(sf::RenderTarget& target) {
     if (drawable) {
@@ -34,12 +29,8 @@ sf::Vector2f GameObject::getPosition() const {
     return body.getPosition();
 }
 
-sf::Transformable& GameObject::getBody() {
+sf::Sprite& GameObject::getBody() {
     return body;
-}
-
-void GameObject::moveObj(const sf::Vector2f& offset) {
-    body.move(offset.x * speed, offset.y * speed);
 }
 
 bool GameObject::isCollidable() const {
@@ -58,20 +49,8 @@ void GameObject::setDrawable(const bool& d) {
     drawable = d;
 }
 
-double GameObject::getSpeed() const {
-    return speed;
-}
-
-void GameObject::setSpeed(const double& s) {
-    speed = s;
-}
-
 bool GameObject::collidesWith(const GameObject& obj) {
     if (!collidable)
         return false;
     return body.getGlobalBounds().intersects(obj.body.getGlobalBounds());
-}
-
-void GameObject::fire() {
-    return;
 }

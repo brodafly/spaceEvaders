@@ -12,6 +12,7 @@
 #include "source/ObjectHandler.h"
 #include "source/ObjectHandler.cpp"
 
+//automate later
 void loadTextures(std::vector<sf::Texture>& textures) {         //consider returning bool
     sf::Texture t;
     if (!t.loadFromFile("assets/Untitled.png")) {
@@ -20,10 +21,20 @@ void loadTextures(std::vector<sf::Texture>& textures) {         //consider retur
         return;
     }
     textures.push_back(t);
+    if (!t.loadFromFile("assets/Bullet.png")) {
+        //throw some exception later
+        std::cout << "Can't load a texture lololololol\n";
+        return;
+    }
+    textures.push_back(t);
 }
+
+//automate later
 void loadLevel(ObjectHandler& objects) {
     GameObject* ptr = new MainActor(ALL_TEXTURES[HERO]);
     ptr->getBody().setPosition(225,570);
+    objects.addObject(ptr);
+    ptr = new EnemyActor(ALL_TEXTURES[HERO]);
     objects.addObject(ptr);
 }
 
