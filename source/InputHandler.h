@@ -4,6 +4,7 @@
 #include "MoveRightCommand.h"
 #include "MoveUpCommand.h"
 #include "MoveDownCommand.h"
+//#include "FireCommand.h"
 
 class InputHandler {
 private:
@@ -11,6 +12,7 @@ private:
     Command* buttonRight;
     Command* buttonUp;
     Command* buttonDown;
+    Command* fire;
 public:
     InputHandler();
     ~InputHandler();

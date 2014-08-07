@@ -6,7 +6,7 @@ extern sf::Vector2u WINDOW_SIZE;
 
 class EnemyActor : public MainActor {
 public:
-    EnemyActor(int health = 1) : MainActor::MainActor(health) {}
+    EnemyActor(const sf::Texture& b) : MainActor::MainActor(b) {}
     ~EnemyActor() {}
 };
 

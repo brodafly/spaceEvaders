@@ -1,10 +1,10 @@
 #ifndef GLOBALS_H
 #define GLOBALS_H
+#include <vector>
 
-sf::Vector2u WINDOW_SIZE;
+enum Direction {NO_DIRECTION, DOWN, LEFT, RIGHT, UP};
+enum Textures {HERO}; //ENEMY_1, ENEMY_2...
+std::vector<sf::Texture> ALL_TEXTURES;      //global, main or !static! for GameObj?
 
-inline void update_window_size(sf::RenderWindow& window)
-{
-    WINDOW_SIZE = window.getSize();
-}
+
 #endif

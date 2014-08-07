@@ -1,14 +1,20 @@
 #include "GameObject.h"
-GameObject::GameObject() {
+
+GameObject::GameObject(const sf::Texture& b) {
     collidable = true;
     drawable = true;
-    body = sf::RectangleShape(sf::Vector2f (50, 50));
+    speed = DEFAULT_SPEED;
+    bodyTexture = b;
+    body = sf::Sprite(bodyTexture);
 }
 
-GameObject::GameObject(const bool& c, const bool& d, const sf::RectangleShape& b) {
-    collidable = c;
-    drawable = d;
-    body = b;
+GameObject::GameObject(const sf::Texture& b, const sf::Vector2f& coordinates) {
+    collidable = true;
+    drawable = true;
+    speed = DEFAULT_SPEED;
+    bodyTexture = b;
+    body = sf::Sprite(bodyTexture);
+    body.setPosition(coordinates);
 }
 
 
@@ -32,7 +38,7 @@ sf::Transformable& GameObject::getBody() {
     return body;
 }
 
-void GameObject::moveObj(const sf::Vector2f& offset, const double& speed) {
+void GameObject::moveObj(const sf::Vector2f& offset) {
     body.move(offset.x * speed, offset.y * speed);
 }
 
@@ -44,8 +50,28 @@ bool GameObject::isDrawable() const {
     return drawable;
 }
 
+void GameObject::setCollision(const bool& c) {
+    collidable = c;
+}
+
+void GameObject::setDrawable(const bool& d) {
+    drawable = d;
+}
+
+double GameObject::getSpeed() const {
+    return speed;
+}
+
+void GameObject::setSpeed(const double& s) {
+    speed = s;
+}
+
 bool GameObject::collidesWith(const GameObject& obj) {
     if (!collidable)
         return false;
     return body.getGlobalBounds().intersects(obj.body.getGlobalBounds());
+}
+
+void GameObject::fire() {
+    return;
 }
